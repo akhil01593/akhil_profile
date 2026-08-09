@@ -1,0 +1,830 @@
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+   --header-height: 3.5rem;
+
+   /*========== Colors ==========*/
+   --hue: 162;
+
+   --first-color: hsl(var(--hue), 100%, 40%);
+   --first-color-alt: hsl(var(--hue), 56%, 35%);
+
+   --title-color: hsl(228, 8%, 95%);
+   --text-color: hsl(228, 8%, 65%);
+
+   --body-color: hsl(228, 15%, 20%);
+   --container-color: hsl(228, 15%, 15%);
+
+   /*========== Font ==========*/
+   --body-font: "Poppins", sans-serif;
+
+   --biggest-font-size: 2rem;
+   --bigger-font-size: 1.25rem;
+   --h1-font-size: 1.5rem;
+   --h2-font-size: 1.25rem;
+   --h3-font-size: 1rem;
+
+   --normal-font-size: .938rem;
+   --small-font-size: .813rem;
+   --smaller-font-size: .75rem;
+
+   /*========== Font weight ==========*/
+   --font-regular: 400;
+   --font-medium: 500;
+   --font-semi-bold: 600;
+
+   /*========== z index ==========*/
+   --z-tooltip: 10;
+   --z-fixed: 100;
+}
+
+
+/*=============== RESPONSIVE TYPOGRAPHY ===============*/
+@media screen and (min-width: 1152px) {
+   :root {
+      --biggest-font-size: 4rem;
+      --bigger-font-size: 2rem;
+      --h1-font-size: 2.25rem;
+      --h2-font-size: 1.5rem;
+      --h3-font-size: 1.25rem;
+
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+      --smaller-font-size: .813rem;
+   }
+}
+
+
+/*=============== BASE ===============*/
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+body,
+input,
+textarea,
+button {
+   font-family: var(--body-font);
+   font-size: var(--normal-font-size);
+}
+
+body {
+   background-color: var(--body-color);
+   color: var(--text-color);
+}
+
+input,
+textarea,
+button {
+   outline: none;
+   border: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+   color: var(--title-color);
+   font-weight: var(--font-medium);
+}
+
+ul {
+   list-style: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+img,
+svg {
+   max-width: 100%;
+   height: auto;
+}
+
+.main {
+   overflow: hidden;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+   max-width: 1120px;
+   margin-inline: 1.5rem;
+}
+
+.grid {
+   display: grid;
+   gap: 1.5rem;
+}
+
+.section {
+   padding-block: 5rem 2rem;
+}
+
+.section__title,
+.section__subtitle {
+   text-align: center;
+   color: var(--title-color);
+   font-weight: var(--font-semi-bold);
+}
+
+.section__title {
+   font-size: var(--h1-font-size);
+   margin-bottom: 1.5rem;
+}
+
+.section__title span {
+   color: var(--first-color);
+}
+
+.section__subtitle {
+   font-size: var(--small-font-size);
+   margin-bottom: .25rem;
+}
+
+.section__subtitle span {
+   color: var(--first-color);
+}
+
+
+/*=============== HEADER & NAV ===============*/
+.header {
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: var(--z-fixed);
+
+   background-color: hsla(228, 15%, 15%, .9);
+   backdrop-filter: blur(10px);
+}
+
+.nav {
+   height: var(--header-height);
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.nav__logo {
+   color: var(--title-color);
+   font-weight: var(--font-semi-bold);
+   font-size: 1.2rem;
+}
+
+.nav__logo span {
+   color: var(--first-color);
+}
+
+.nav__toggle,
+.nav__close {
+   color: var(--title-color);
+   font-size: 1.5rem;
+   cursor: pointer;
+}
+
+
+/*=============== NAVIGATION MOBILE ===============*/
+@media screen and (max-width: 767px) {
+   .nav__menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+
+      width: 75%;
+      height: 100%;
+
+      padding: 6rem 3rem 0;
+
+      background-color: var(--container-color);
+
+      transition: right .4s;
+   }
+
+   .nav__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+   }
+
+   .nav__link {
+      color: var(--title-color);
+      font-weight: var(--font-medium);
+   }
+
+   .nav__link:hover {
+      color: var(--first-color);
+   }
+
+   .nav__close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+   }
+
+   /* Show menu */
+   .show-menu {
+      right: 0;
+   }
+}
+
+
+/*=============== HOME ===============*/
+.home {
+   min-height: 100vh;
+
+   display: flex;
+   align-items: center;
+}
+
+.home__container {
+   padding-top: 4rem;
+}
+
+.home__content {
+   text-align: center;
+}
+
+.home__subtitle {
+   font-size: var(--bigger-font-size);
+   margin-bottom: .5rem;
+}
+
+.home__subtitle span {
+   color: var(--first-color);
+}
+
+.home__title {
+   font-size: var(--biggest-font-size);
+   margin-bottom: .5rem;
+}
+
+.home__education {
+   font-size: var(--h3-font-size);
+   color: var(--text-color);
+   margin-bottom: 1rem;
+}
+
+.home__description {
+   max-width: 550px;
+   margin: 0 auto 2rem;
+
+   line-height: 1.8;
+}
+
+
+/*=============== HOME IMAGE ===============*/
+.home__img {
+   width: 250px;
+   height: 250px;
+
+   margin: 2rem auto 0;
+
+   border-radius: 50%;
+   overflow: hidden;
+
+   border: 5px solid var(--first-color);
+}
+
+.home__img img {
+   width: 100%;
+   height: 100%;
+
+   object-fit: cover;
+}
+
+
+/*=============== BUTTON ===============*/
+.button {
+   display: inline-block;
+
+   background-color: var(--first-color);
+   color: var(--body-color);
+
+   padding: .75rem 1.5rem;
+
+   border-radius: .5rem;
+
+   font-weight: var(--font-medium);
+
+   transition: background-color .3s,
+               transform .3s;
+}
+
+.button:hover {
+   background-color: var(--first-color-alt);
+   color: var(--title-color);
+
+   transform: translateY(-3px);
+}
+
+
+/*=============== ABOUT ===============*/
+.about__container {
+   align-items: center;
+}
+
+.about__data {
+   text-align: center;
+}
+
+.about__description {
+   max-width: 750px;
+
+   margin: 0 auto 2rem;
+
+   line-height: 1.8;
+}
+
+
+/*=============== SKILLS ===============*/
+.skills__container {
+   grid-template-columns: 1fr;
+}
+
+.skills__content {
+   background-color: var(--container-color);
+
+   padding: 2rem;
+
+   border-radius: 1rem;
+}
+
+.skills__title {
+   text-align: center;
+   margin-bottom: 1.5rem;
+
+   color: var(--first-color);
+}
+
+.skills__box {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+
+   gap: 1.5rem;
+}
+
+.skills__group {
+   display: grid;
+   gap: 1.5rem;
+}
+
+.skills__data {
+   display: flex;
+   align-items: center;
+   gap: .75rem;
+}
+
+.skills__data i {
+   color: var(--first-color);
+   font-size: 1.2rem;
+}
+
+.skills__name {
+   font-size: var(--normal-font-size);
+}
+
+.skills__level {
+   font-size: var(--smaller-font-size);
+   color: var(--text-color);
+}
+
+
+/*=============== EDUCATION ===============*/
+.services__container {
+   grid-template-columns: 1fr;
+}
+
+.services__card {
+   position: relative;
+
+   background-color: var(--container-color);
+
+   padding: 2rem;
+
+   border-radius: 1rem;
+
+   overflow: hidden;
+
+   transition: transform .3s;
+}
+
+.services__card:hover {
+   transform: translateY(-8px);
+}
+
+.services__border {
+   position: absolute;
+
+   top: 0;
+   left: 0;
+
+   width: 100%;
+   height: 4px;
+
+   background-color: var(--first-color);
+}
+
+.services__content {
+   text-align: center;
+}
+
+.services__icon {
+   font-size: 2.5rem;
+
+   color: var(--first-color);
+
+   margin-bottom: 1rem;
+}
+
+.services__title {
+   font-size: var(--h2-font-size);
+
+   margin-bottom: .75rem;
+}
+
+.services__description {
+   line-height: 1.7;
+}
+
+
+/*=============== PROJECTS ===============*/
+.projects__container {
+   grid-template-columns: 1fr;
+}
+
+.projects__card {
+   background-color: var(--container-color);
+
+   padding: 2rem;
+
+   border-radius: 1rem;
+
+   transition: transform .3s,
+               box-shadow .3s;
+}
+
+.projects__card:hover {
+   transform: translateY(-8px);
+
+   box-shadow: 0 10px 30px hsla(var(--hue), 100%, 40%, .15);
+}
+
+.projects__subtitle {
+   color: var(--first-color);
+
+   font-size: var(--small-font-size);
+
+   font-weight: var(--font-medium);
+}
+
+.projects__title {
+   font-size: var(--h2-font-size);
+
+   margin: .5rem 0 1rem;
+}
+
+.projects__description {
+   line-height: 1.7;
+}
+
+
+/*=============== CONTACT ===============*/
+.contact__container {
+   grid-template-columns: 1fr;
+}
+
+.contact__content {
+   text-align: center;
+}
+
+.contact__title {
+   font-size: var(--h2-font-size);
+   margin-bottom: 1rem;
+}
+
+.contact__description {
+   line-height: 1.7;
+}
+
+.contact__info {
+   display: grid;
+
+   grid-template-columns: repeat(3, 1fr);
+
+   gap: 1rem;
+}
+
+.contact__card {
+   background-color: var(--container-color);
+
+   padding: 1.5rem 1rem;
+
+   border-radius: .75rem;
+
+   text-align: center;
+}
+
+.contact__card-icon {
+   color: var(--first-color);
+
+   font-size: 1.5rem;
+
+   margin-bottom: .5rem;
+}
+
+.contact__card-title {
+   font-size: var(--normal-font-size);
+
+   margin-bottom: .25rem;
+}
+
+.contact__card-data {
+   font-size: var(--smaller-font-size);
+
+   word-break: break-word;
+}
+
+
+/*=============== FOOTER ===============*/
+.footer {
+   background-color: var(--container-color);
+
+   padding-block: 3rem 2rem;
+
+   margin-top: 3rem;
+}
+
+.footer__container {
+   text-align: center;
+}
+
+.footer__title {
+   font-size: var(--h2-font-size);
+
+   margin-bottom: .5rem;
+}
+
+.footer__title::first-letter {
+   color: var(--first-color);
+}
+
+.footer__description {
+   margin-bottom: 1.5rem;
+}
+
+.footer__social {
+   display: flex;
+   justify-content: center;
+
+   gap: 1rem;
+
+   margin-bottom: 1.5rem;
+}
+
+.footer__social-link {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   width: 40px;
+   height: 40px;
+
+   background-color: var(--body-color);
+
+   border-radius: 50%;
+
+   color: var(--title-color);
+
+   font-size: 1.2rem;
+
+   transition: color .3s,
+               background-color .3s;
+}
+
+.footer__social-link:hover {
+   color: var(--body-color);
+
+   background-color: var(--first-color);
+}
+
+.footer__copy {
+   font-size: var(--smaller-font-size);
+
+   color: var(--text-color);
+}
+
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+   width: .6rem;
+}
+
+::-webkit-scrollbar-track {
+   background-color: var(--body-color);
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: var(--first-color);
+   border-radius: 1rem;
+}
+
+
+/*=============== SCROLL UP ===============*/
+.scrollup {
+   position: fixed;
+
+   right: 1rem;
+   bottom: -30%;
+
+   display: inline-flex;
+
+   padding: .5rem;
+
+   background-color: var(--first-color);
+
+   color: var(--body-color);
+
+   font-size: 1.2rem;
+
+   border-radius: .4rem;
+
+   z-index: var(--z-tooltip);
+
+   transition: bottom .4s,
+               transform .3s;
+}
+
+.scrollup:hover {
+   transform: translateY(-4px);
+}
+
+/* Show Scroll Up */
+.show-scroll {
+   bottom: 3rem;
+}
+
+
+/*=============== ACTIVE LINK ===============*/
+.active-link {
+   color: var(--first-color) !important;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+
+/*========== For small devices ==========*/
+@media screen and (max-width: 450px) {
+
+   .container {
+      margin-inline: 1rem;
+   }
+
+   .skills__box {
+      grid-template-columns: 1fr;
+   }
+
+   .contact__info {
+      grid-template-columns: 1fr;
+   }
+
+   .home__img {
+      width: 200px;
+      height: 200px;
+   }
+}
+
+
+/*========== For medium devices ==========*/
+@media screen and (min-width: 576px) {
+
+   .home__container {
+      grid-template-columns: 1fr;
+      justify-items: center;
+   }
+
+   .skills__container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .services__container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .projects__container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+
+/*========== For large devices ==========*/
+@media screen and (min-width: 768px) {
+
+   .container {
+      margin-inline: auto;
+   }
+
+   .nav__toggle,
+   .nav__close {
+      display: none;
+   }
+
+   .nav__list {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+   }
+
+   .nav__link {
+      color: var(--title-color);
+
+      font-size: var(--small-font-size);
+
+      font-weight: var(--font-medium);
+
+      transition: color .3s;
+   }
+
+   .nav__link:hover {
+      color: var(--first-color);
+   }
+
+   .home__container {
+      grid-template-columns: 1fr 1fr;
+
+      align-items: center;
+
+      padding-top: 5rem;
+   }
+
+   .home__content {
+      text-align: left;
+   }
+
+   .home__description {
+      margin-left: 0;
+   }
+
+   .home__img {
+      width: 350px;
+      height: 350px;
+
+      margin: 0 auto;
+   }
+
+   .skills__container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .services__container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   .projects__container {
+      grid-template-columns: repeat(3, 1fr);
+   }
+
+   .contact__container {
+      grid-template-columns: repeat(2, 1fr);
+
+      align-items: center;
+   }
+
+   .contact__content {
+      text-align: left;
+   }
+}
+
+
+/*========== For extra large devices ==========*/
+@media screen and (min-width: 1152px) {
+
+   .container {
+      max-width: 1120px;
+   }
+
+   .section {
+      padding-block: 7rem 2rem;
+   }
+
+   .home__container {
+      min-height: 100vh;
+   }
+
+   .home__img {
+      width: 400px;
+      height: 400px;
+   }
+}
