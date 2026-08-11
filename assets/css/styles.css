@@ -213,6 +213,10 @@ svg {
       transition: right .4s;
    }
 
+   .show-menu {
+    right: 0;
+}
+
    .nav__list {
       display: flex;
       flex-direction: column;
@@ -248,6 +252,7 @@ svg {
    display: flex;
    align-items: center;
 }
+
 
 .home__container {
    padding-top: 4rem;
@@ -286,25 +291,50 @@ svg {
 
 
 /*=============== HOME IMAGE ===============*/
+/*=============== HOME IMAGE ===============*/
+
 .home__img {
    width: 250px;
    height: 250px;
-
    margin: 2rem auto 0;
 
    border-radius: 50%;
    overflow: hidden;
 
    border: 5px solid var(--first-color);
+
+   /* Smooth hover effect */
+   transition: transform .4s ease, box-shadow .4s ease;
 }
 
+
+/* Default - Black & White */
 .home__img img {
    width: 100%;
    height: 100%;
 
    object-fit: cover;
+
+   filter: grayscale(100%);
+   transition: filter .5s ease, transform .5s ease;
 }
 
+
+/* Hover - Full Color */
+.home__img:hover img {
+   filter: grayscale(0%);
+   transform: scale(1.04);
+}
+
+
+/* Slight premium effect */
+.home__img:hover {
+   transform: translateY(-5px);
+
+   box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.35),
+      0 0 25px hsla(var(--hue), 100%, 40%, 0.25);
+}
 
 /*=============== BUTTON ===============*/
 .button {
